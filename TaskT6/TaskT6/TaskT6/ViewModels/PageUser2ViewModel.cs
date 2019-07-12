@@ -100,7 +100,7 @@ namespace TaskT6.ViewModels
             _navigationService = navigationService;
             GetUserApiAsync();
             GetnamelistAsync();
-           
+
 
 
 
@@ -143,9 +143,9 @@ namespace TaskT6.ViewModels
                 Email = UserInfo.Email;
                 Uriimage = "iconlogin.jpg";
                 UserInfo.Name = Username;
-             
+
             }
-            if (FacebookAuth.loginfb==true)
+            if (FacebookAuth.loginfb == true)
             {
                 Username = FacebookAuth.User.Name;
                 Uriimage = FacebookAuth.User.Picture.Data.Url;

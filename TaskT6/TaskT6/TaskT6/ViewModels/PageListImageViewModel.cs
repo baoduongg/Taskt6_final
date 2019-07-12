@@ -11,7 +11,7 @@ using System.Text;
 
 namespace TaskT6.ViewModels
 {
-   public class PageListImageViewModel: BindableBase
+    public class PageListImageViewModel : BindableBase
     {
         private ObservableCollection<Photo> _photolist;
 
@@ -20,15 +20,15 @@ namespace TaskT6.ViewModels
             get { return _photolist; }
             set { SetProperty(ref _photolist, value); }
         }
-     
-     
+
+
         private INavigationService _navigationService;
-        
+
 
 
         public PageListImageViewModel(INavigationService navigationService)
         {
-           
+
             _navigationService = navigationService;
             GetDataAsync();
         }
@@ -47,7 +47,7 @@ namespace TaskT6.ViewModels
             }
         }
 
-    
+
 
         private void HandleSelectedItem()
         {
@@ -57,19 +57,19 @@ namespace TaskT6.ViewModels
                 { "selectedphoto", SelectedPhoto }
             };
             _navigationService.NavigateAsync("PageAbout", naviparams);
-           
+
         }
 
         private async void GetDataAsync()
         {
-       
-                var apiResponse = RestService.For<IGetDataApi>("https://jsonplaceholder.typicode.com");
-                var imageslist = await apiResponse.GetImages(UserInfo.Userid);
-                Photolist = imageslist;
-           
-        }
-     
 
-       
+            var apiResponse = RestService.For<IGetDataApi>("https://jsonplaceholder.typicode.com");
+            var imageslist = await apiResponse.GetImages(UserInfo.Userid);
+            Photolist = imageslist;
+
+        }
+
+
+
     }
 }

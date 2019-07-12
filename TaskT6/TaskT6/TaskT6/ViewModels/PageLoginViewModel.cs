@@ -1,4 +1,4 @@
-﻿using Android.Content;
+﻿
 using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Navigation;
@@ -13,15 +13,15 @@ using Xamarin.Essentials;
 
 namespace TaskT6.ViewModels
 {
-   public  class PageLoginViewModel : BindableBase
+    public class PageLoginViewModel : BindableBase
     {
         private string etremail;
         private string etrpass;
         private string uriimage;
-       
-        private INavigationService _navigationService;  
+
+        private INavigationService _navigationService;
         IPageDialogService dialogService;
-      
+
         private List<string> _list;
         public List<string> List
         {
@@ -46,7 +46,7 @@ namespace TaskT6.ViewModels
 
         public string Etrpass { get => etrpass; set => etrpass = value; }
         private DelegateCommand _btnlogincommand;
-        public DelegateCommand Btnlogincommand => _btnlogincommand ??            
+        public DelegateCommand Btnlogincommand => _btnlogincommand ??
           (_btnlogincommand = new DelegateCommand(ActionLogin));
 
         public string Uriimage { get => uriimage; set => uriimage = value; }
@@ -54,23 +54,23 @@ namespace TaskT6.ViewModels
 
         private void ActionLogin()
         {
-            if(Connectivity.NetworkAccess != NetworkAccess.Internet)
+            if (Connectivity.NetworkAccess != NetworkAccess.Internet)
             {
                 dialogService.DisplayAlertAsync("Alert", "No Internet", "Cancel");
                 return;
             }
-           if(EtrEmail.Length>= 8 && Etrpass.Length>= 8 )
+            if (EtrEmail.Length >= 8 && Etrpass.Length >= 8)
             {
-              
+
 
                 UserInfo.Email = EtrEmail;
                 UserInfo.Pass = Etrpass;
-                _navigationService.NavigateAsync("PageMaster", useModalNavigation: true);
-             
+                _navigationService.NavigateAsync("/PageMaster", useModalNavigation: true);
+
 
 
             }
-           else
+            else
             {
                 dialogService.DisplayAlertAsync("Alert", "You Login Fail", "OK");
             }
@@ -92,6 +92,6 @@ namespace TaskT6.ViewModels
             var apiuser = await apiResponse.GetUserName();
             Emaillist = apiuser;
         }
-     
+
     }
 }

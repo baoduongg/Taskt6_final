@@ -20,12 +20,12 @@ namespace TaskT6.ViewModels
 
         [Get("/photos?albumId={brand}")]
         Task<ObservableCollection<Photo>> GetImages(string brand);
-        
+
         [Get("/albums?id={brand}")]
         Task<List<Albums>> GetAlbum(string brand);
 
 
-     
+
 
     }
 }

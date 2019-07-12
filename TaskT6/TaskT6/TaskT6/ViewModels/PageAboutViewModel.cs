@@ -17,7 +17,7 @@ namespace TaskT6.ViewModels
             get { return _phototemp; }
             set { SetProperty(ref _phototemp, value); }
         }
-     
+
 
         private string _albumname;
         public string Albumname
@@ -62,7 +62,7 @@ namespace TaskT6.ViewModels
 
         private string _albumid;
         private DelegateCommand _btnback;
-          
+
         public PageAboutViewModel(INavigationService navigationService)
         {
             _navigationService = navigationService;
@@ -71,7 +71,7 @@ namespace TaskT6.ViewModels
         }
         public void OnNavigatedFrom(INavigationParameters parameters)
         {
-           
+
         }
 
         public void OnNavigatedTo(INavigationParameters parameters)
@@ -82,17 +82,17 @@ namespace TaskT6.ViewModels
             var albumidtemp = Phototemp.AlbumId;
             Title = titletemp;
             Url = urltemp;
-           _albumid = ""+albumidtemp;
+            _albumid = "" + albumidtemp;
             GetAlbums();
-             GetUserName();
-           
+            GetUserName();
+
         }
         private async void GetAlbums()
         {
             var apiResponse = RestService.For<IGetDataApi>("https://jsonplaceholder.typicode.com");
             var albumtemp = await apiResponse.GetAlbum(_albumid);
             Albumname = albumtemp[0].Title;
-   
+
         }
         private async void GetUserName()
         {
@@ -103,8 +103,8 @@ namespace TaskT6.ViewModels
             Email = usertemp[0].Email;
 
         }
-        
-        
-        
+
+
+
     }
 }

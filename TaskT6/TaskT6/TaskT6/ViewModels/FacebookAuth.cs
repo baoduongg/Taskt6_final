@@ -8,18 +8,18 @@ using Xamarin.Forms;
 
 namespace TaskT6.ViewModels
 {
-   public static class FacebookAuth
+    public static class FacebookAuth
     {
         public static UserFB User;
         public static bool loginfb = false;
         public static void SetUser(string response)
         {
             loginfb = true;
-            
-                User = JsonConvert.DeserializeObject<UserFB>(response);
+
+            User = JsonConvert.DeserializeObject<UserFB>(response);
 
             Application.Current.MainPage = new PageMaster();
         }
-     
+
     }
 }
